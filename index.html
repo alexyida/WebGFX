@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <h1>WebGFX</h1>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <canvas id="canvas" width="550" height="375">Your browser does not support the canvas tag. This is a static example of what would be seen.</canvas>
+    <script type="text/javascript" src="js/webgl-utils.js"></script>
+    <script type="text/javascript" src="js/glMatrix.js"></script>
+    <script id="vertex_shader" type="x-shader/x-vertex">
+uniform mat4 u_MVPMatrix;
+
+attribute vec4 a_Position;
+attribute vec4 a_Color;
+
+varying vec4 v_Color;
+
+void main() {
+  v_Color = a_Color;
+  gl_Position = u_MVPMatrix * a_Position;
+}
+    </script>
+    <script id="fragment_shader" type="x-shader/x-fragment">
+precision mediump float;
+
+varying vec4 v_Color;
+
+void main() {
+  gl_FragColor = v_Color;
+}
+    </script>
+    <script type="text/javascript" src="js/triangle.js"></script>
+  </body>
+</html>
